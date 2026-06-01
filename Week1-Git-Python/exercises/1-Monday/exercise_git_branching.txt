@@ -1,0 +1,144 @@
+Task 1: Initialize the Repository
+- mkdir qa-project
+- cd qa-project
+- git init
+- touch README.md 
+- code .
+
+add content to README.md:
+# QA project
+A quality assurance automation project.
+
+- git status
+- git add .
+- git commit -m "initial commit: add README"
+- git push origin main
+- git log --oneline
+
+Task 2: Create a Feature Branch
+- git checkout -b feature/add-test-plan
+- touch test-plan.md
+
+add content to test-plan.md:
+# Test Plan
+
+## Scope
+- Login functionality
+- User registration
+- Password reset
+
+## Test Types
+- Unit tests
+- Integration tests
+- End-to-end tests
+
+- git status
+- git add .
+- git commit -m "Add test plan document"
+
+- touch test-cases.md
+
+add content to test-cases.md:
+# Test Cases
+
+## TC-001: Valid Login
+- **Input:** Valid username and password
+- **Expected:** Redirect to dashboard
+
+## TC-002: Invalid Login
+- **Input:** Invalid password
+- **Expected:** Error message displayed
+
+- git status
+- git add .
+- git commit -m "Add initial test cases"
+- git log --oneline
+
+
+Task 3: Switch Back and Verify Isolation
+- git checkout main
+- ls
+# test-plan.md and test-cases.md didn't go anywhere, the files were just created in a different branch (feature/add-test-plan), because
+# we are in the main branch, they don't appear
+
+
+Task 4: Make a change on main
+- code .
+
+add content to README.md:
+# QA project
+A quality assurance automation project.
+
+## Team
+- Lead: Your Name
+- Role: QA Engineer
+
+- git status
+- git add .
+- git commit -m "add team section to README"
+
+
+Task 5: Merge the Feature Branch
+- git merge feature/add-test-plan
+- ls
+- run git log --oneline --graph
+- git branch -d feature/add-test-plan
+
+
+Task 6: Simulate and Resolve a Merge Conflict
+- git checkout -b feature/update-test-plan
+- code .
+
+edit content on test-plan.md:
+## Scope
+- Login functionality
+- User registration
+- Password reset
+- Shopping cart
+- Payment processing
+
+- git add .
+- git commit -m "Expand test plan scope on feature branch"
+- git checkout main
+
+edit the same file "test-plan.md" but change the "scope" section differently:
+## Scope
+- Login functionality
+- User registration
+- Password reset
+- User profile management
+- Admin dashboard
+
+- git commit -m "Update test plan scope on main"
+- git merge feature/update-test-plan
+
+Conflict:
+"<<<<<<< HEAD
+(main's version)
+=======
+(feature branch's version)
+>>>>>>>"
+
+#Resolve conflict by combining both versions:
+
+replace content in test-plan.md to resolve conflict:
+## Scope
+- Login functionality
+- User registration
+- Password reset
+- Shopping cart
+- Payment processing
+- User profile management
+- Admin dashboard
+
+- git status
+- git add .
+- git commit -m "Resolve merge conflict: combine scope updates"
+- git log --oneline --graph
+- git push origin main
+
+#delete feature branches
+- git branch -d feature/add-test-plan
+- git branch -d feature/update-test-plan
+
+- git push origin main
