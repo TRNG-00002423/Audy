@@ -1,40 +1,40 @@
 """
-Legacy Test Runner — Uses print() everywhere.
-YOUR TASK: Replace ALL print() calls with appropriate logging calls.
-
-Import and use setup_logging() from logging_config.py.
+LEGACY CODE — This file uses print() everywhere.
+YOUR TASK: Replace all print() calls with appropriate logging calls.
 """
 
 import time
 import random
+from logging_config import setup_logging
 
+logger = setup_logging()
 
 def run_test(test_name):
     """Run a single test (simulated)."""
-    print(f"Running test: {test_name}")
+    logger.debug(f"Running test: {test_name}")       # TODO: Log at appropriate level
     duration = random.uniform(0.1, 2.0)
-    time.sleep(0.01)
+    time.sleep(0.01)  # Simulate work
 
     if random.random() < 0.2:
-        print(f"ERROR: {test_name} failed!")
+        logger.error(f"ERROR: {test_name} failed!")   # TODO: Log as ERROR
         print(f"  Duration: {duration:.2f}s")
         return False
 
-    print(f"  {test_name} passed ({duration:.2f}s)")
+    logger.info(f"  {test_name} passed ({duration:.2f}s)")  # TODO: Log as INFO
     return True
 
 
 def run_suite(suite_name, test_names):
     """Run a suite of tests."""
     print(f"\n{'='*50}")
-    print(f"Starting suite: {suite_name}")
+    logger.info(f"Starting suite: {suite_name}")     # TODO: Log as INFO
     print(f"Tests to run: {len(test_names)}")
     print(f"{'='*50}\n")
 
     results = {"passed": 0, "failed": 0}
 
     for i, test in enumerate(test_names, 1):
-        print(f"[{i}/{len(test_names)}]", end=" ")
+        logger.debug(f"[{i}/{len(test_names)}]")  # TODO: Log with context
         if run_test(test):
             results["passed"] += 1
         else:
@@ -47,18 +47,16 @@ def run_suite(suite_name, test_names):
     print(f"Results: {results['passed']}/{total} passed ({rate:.1f}%)")
 
     if rate < 80:
-        print(f"WARNING: Pass rate below 80%!")
+        logger.warning(f"WARNING: Pass rate below 80%!")  # TODO: Log as WARNING
     if rate < 50:
-        print(f"CRITICAL: More than half the tests failed!")
+        logger.critical(f"CRITICAL: More than half the tests failed!")  # TODO: CRITICAL
 
     return results
 
 
 def main():
-    print("QA Test Framework v1.0")
+    logger.info("QA Test Framework v1.0")        # TODO: Log as INFO
     print("Initializing...")
-
-    random.seed(42)
 
     suites = {
         "Smoke Tests": ["test_login", "test_homepage", "test_search"],
@@ -75,7 +73,7 @@ def main():
             all_results["passed"] += result["passed"]
             all_results["failed"] += result["failed"]
         except Exception as e:
-            print(f"Suite {suite_name} crashed: {e}")
+            logger.error(f"Suite {suite_name} crashed: {e}", exc_info=True)  # TODO: Log with exc_info
 
     total = all_results["passed"] + all_results["failed"]
     print(f"\nFinal: {all_results['passed']}/{total} overall")
