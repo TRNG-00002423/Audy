@@ -70,7 +70,10 @@ names = list(map(lambda x: x["name"], test_results))
 
 # TODO 2b: Transform each record into a status badge string.
 # Format: "✅ test_login (1200ms)"  or  "❌ test_search (850ms)"
-badges = list(map(lambda x: f"{"✅" if x["status"] == "pass" else "❌"} {x["name"]} ({x["duration_ms"]}ms)",test_results,))
+badges = list(map(
+    lambda x: f"{'✅' if x['status'] == 'pass' else '❌'} {x['name']} ({x['duration_ms']}ms)",
+    test_results
+))
 
 # TODO 2c: Extract the set of unique module names.
 # Expected: {'auth', 'search', 'checkout', 'profile'}
@@ -162,9 +165,7 @@ for endpoint, expected, actual in zip(endpoints, expected_codes, actual_codes):
 # TODO 5b: Unzip test_results into 4 parallel tuples:
 #   (names, modules, durations, statuses)
 # Hint: zip(*[[r['name'], r['module'], ...] for r in test_results])
-name_t, module_t, duration_t, status_t = zip(
-*map(lambda x: (x["name"], x["module"], x["duration_ms"], x["status"]) for x in test_results)
-)
+name_t, module_t, duration_t, status_t = zip(*[[r['name'], r['module'], r['duration_ms'], r['status']] for r in test_results])
 
 # TODO 5c: Build a dict mapping test names to duration_ms using zip().
 # Expected: {'test_login': 1200, 'test_register': 2100, ...}
@@ -188,10 +189,10 @@ section("Stretch: Full Pipeline")
 avg_fail_duration = (
 reduce(
 lambda acc, r: acc + r["duration_ms"],
-filter(lambda r: r["status"] == "fail", test_results),
+filter(lambda x: x["status"] == "fail", test_results),
 0,
 )
-/ len(list(filter(lambda r: r["status"] == "fail", test_results)))
+/ len(list(filter(lambda x: x["status"] == "fail", test_results)))
 )
 
 if __name__ == "__main__":
