@@ -1,0 +1,70 @@
+
+2026-06-07 17:47:58,156 | INFO     | qa_framework:58 | QA Test Framework v1.0
+2026-06-07 17:47:58,156 | INFO     | qa_framework:30 | Starting suite: Smoke Tests
+2026-06-07 17:47:58,156 | DEBUG    | qa_framework:37 | [1/3]
+2026-06-07 17:47:58,156 | DEBUG    | qa_framework:14 | Running test: test_login
+2026-06-07 17:47:58,169 | INFO     | qa_framework:23 |   test_login passed (0.17s)
+2026-06-07 17:47:58,169 | DEBUG    | qa_framework:37 | [2/3]
+2026-06-07 17:47:58,169 | DEBUG    | qa_framework:14 | Running test: test_homepage
+2026-06-07 17:47:58,182 | INFO     | qa_framework:23 |   test_homepage passed (1.81s)
+2026-06-07 17:47:58,182 | DEBUG    | qa_framework:37 | [3/3]
+2026-06-07 17:47:58,182 | DEBUG    | qa_framework:14 | Running test: test_search
+2026-06-07 17:47:58,195 | INFO     | qa_framework:23 |   test_search passed (1.32s)
+2026-06-07 17:47:58,195 | INFO     | qa_framework:30 | Starting suite: Regression
+2026-06-07 17:47:58,195 | DEBUG    | qa_framework:37 | [1/5]
+2026-06-07 17:47:58,195 | DEBUG    | qa_framework:14 | Running test: test_checkout
+2026-06-07 17:47:58,207 | ERROR    | qa_framework:19 | ERROR: test_checkout failed!
+2026-06-07 17:47:58,208 | DEBUG    | qa_framework:37 | [2/5]
+2026-06-07 17:47:58,208 | DEBUG    | qa_framework:14 | Running test: test_payment
+2026-06-07 17:47:58,218 | INFO     | qa_framework:23 |   test_payment passed (0.34s)
+2026-06-07 17:47:58,218 | DEBUG    | qa_framework:37 | [3/5]
+2026-06-07 17:47:58,218 | DEBUG    | qa_framework:14 | Running test: test_profile
+2026-06-07 17:47:58,231 | INFO     | qa_framework:23 |   test_profile passed (1.85s)
+2026-06-07 17:47:58,231 | DEBUG    | qa_framework:37 | [4/5]
+2026-06-07 17:47:58,231 | DEBUG    | qa_framework:14 | Running test: test_settings
+2026-06-07 17:47:58,243 | INFO     | qa_framework:23 |   test_settings passed (0.29s)
+2026-06-07 17:47:58,244 | DEBUG    | qa_framework:37 | [5/5]
+2026-06-07 17:47:58,244 | DEBUG    | qa_framework:14 | Running test: test_logout
+2026-06-07 17:47:58,256 | INFO     | qa_framework:23 |   test_logout passed (0.35s)
+2026-06-07 17:47:58,256 | INFO     | qa_framework:30 | Starting suite: Performance
+2026-06-07 17:47:58,256 | DEBUG    | qa_framework:37 | [1/2]
+2026-06-07 17:47:58,256 | DEBUG    | qa_framework:14 | Running test: test_load_page
+2026-06-07 17:47:58,268 | INFO     | qa_framework:23 |   test_load_page passed (0.21s)
+2026-06-07 17:47:58,269 | DEBUG    | qa_framework:37 | [2/2]
+2026-06-07 17:47:58,269 | DEBUG    | qa_framework:14 | Running test: test_api_response
+2026-06-07 17:47:58,281 | INFO     | qa_framework:23 |   test_api_response passed (1.00s)
+2026-06-07 17:51:51,214 | INFO     | qa_framework:58 | QA Test Framework v1.0
+2026-06-07 17:51:51,214 | INFO     | qa_framework:30 | Starting suite: Smoke Tests
+2026-06-07 17:51:51,214 | DEBUG    | qa_framework:37 | [1/3]
+2026-06-07 17:51:51,214 | DEBUG    | qa_framework:14 | Running test: test_login
+2026-06-07 17:51:51,227 | INFO     | qa_framework:23 |   test_login passed (0.19s)
+2026-06-07 17:51:51,227 | DEBUG    | qa_framework:37 | [2/3]
+2026-06-07 17:51:51,227 | DEBUG    | qa_framework:14 | Running test: test_homepage
+2026-06-07 17:51:51,238 | ERROR    | qa_framework:19 | ERROR: test_homepage failed!
+2026-06-07 17:51:51,239 | DEBUG    | qa_framework:37 | [3/3]
+2026-06-07 17:51:51,239 | DEBUG    | qa_framework:14 | Running test: test_search
+2026-06-07 17:51:51,251 | INFO     | qa_framework:23 |   test_search passed (1.94s)
+2026-06-07 17:51:51,251 | WARNING  | qa_framework:50 | WARNING: Pass rate below 80%!
+2026-06-07 17:51:51,252 | INFO     | qa_framework:30 | Starting suite: Regression
+2026-06-07 17:51:51,252 | DEBUG    | qa_framework:37 | [1/5]
+2026-06-07 17:51:51,252 | DEBUG    | qa_framework:14 | Running test: test_checkout
+2026-06-07 17:51:51,264 | INFO     | qa_framework:23 |   test_checkout passed (1.80s)
+2026-06-07 17:51:51,264 | DEBUG    | qa_framework:37 | [2/5]
+2026-06-07 17:51:51,264 | DEBUG    | qa_framework:14 | Running test: test_payment
+2026-06-07 17:51:51,277 | INFO     | qa_framework:23 |   test_payment passed (0.86s)
+2026-06-07 17:51:51,277 | DEBUG    | qa_framework:37 | [3/5]
+2026-06-07 17:51:51,277 | DEBUG    | qa_framework:14 | Running test: test_profile
+2026-06-07 17:51:51,290 | INFO     | qa_framework:23 |   test_profile passed (1.44s)
+2026-06-07 17:51:51,290 | DEBUG    | qa_framework:37 | [4/5]
+2026-06-07 17:51:51,290 | DEBUG    | qa_framework:14 | Running test: test_settings
+2026-06-07 17:51:51,303 | INFO     | qa_framework:23 |   test_settings passed (0.70s)
+2026-06-07 17:51:51,303 | DEBUG    | qa_framework:37 | [5/5]
+2026-06-07 17:51:51,303 | DEBUG    | qa_framework:14 | Running test: test_logout
+2026-06-07 17:51:51,315 | INFO     | qa_framework:23 |   test_logout passed (1.61s)
+2026-06-07 17:51:51,316 | INFO     | qa_framework:30 | Starting suite: Performance
+2026-06-07 17:51:51,316 | DEBUG    | qa_framework:37 | [1/2]
+2026-06-07 17:51:51,316 | DEBUG    | qa_framework:14 | Running test: test_load_page
+2026-06-07 17:51:51,329 | INFO     | qa_framework:23 |   test_load_page passed (1.83s)
+2026-06-07 17:51:51,329 | DEBUG    | qa_framework:37 | [2/2]
+2026-06-07 17:51:51,329 | DEBUG    | qa_framework:14 | Running test: test_api_response
+2026-06-07 17:51:51,341 | INFO     | qa_framework:23 |   test_api_response passed (0.24s)
