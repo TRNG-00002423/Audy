@@ -1,0 +1,5 @@
+file = open("notes.txt","w")
+# file.write("\nHello There\n")
+# file.write("Python\n")
+# file.writelines("This is a new line")
+file.close()
