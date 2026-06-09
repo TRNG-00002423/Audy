@@ -12,11 +12,13 @@ from __future__ import annotations
 import csv
 import sys
 from pathlib import Path
+from datetime import datetime
+
 
 
 def main() -> None:
-    base = Path("data")
-    sales_data_file = base / "sales.csv"
+    
+    sales_data_file = Path(__file__).parent / "data" / "sales.csv" #path relavtive to to this script (starter_code/)
     # print(sales_data_file.suffix)
 
     row_count = 0
@@ -50,7 +52,19 @@ def main() -> None:
 
     average_line_revenue = grand_total / row_count
 
- 
+    # output/summary.txt is relative to this file (starter_code/)
+    report_path = Path(__file__).parent / "output" / "summary.txt"
+    report_path.parent.mkdir(parents=True, exist_ok=True)
+
+    with open(report_path, "w", encoding="utf-8") as f:
+        f.write(f"Sales Summary Report — {datetime.now()}\n")
+        f.write("=" * 40 + "\n")
+        f.write(f"rows={row_count}\n")
+        f.write(f"grand_total={grand_total:.2f}\n")
+        f.write(f"average_line_revenue={average_line_revenue:.2f}\n")
+        f.write(f"top_sku={top_sku}\n")
+        f.write(f"top_line_revenue={top_line_revenue:.2f}\n")
+        f.write("=" * 40 + "\n")
 
 
 if __name__ == "__main__":

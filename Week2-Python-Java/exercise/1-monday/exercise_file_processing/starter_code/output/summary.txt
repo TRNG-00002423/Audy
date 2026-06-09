@@ -1,0 +1,8 @@
+Sales Summary Report — 2026-06-08 21:19:09.608254
+========================================
+rows=5
+grand_total=264.99
+average_line_revenue=53.00
+top_sku=C300
+top_line_revenue=99.99
+========================================
