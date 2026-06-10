@@ -14,8 +14,21 @@ public class TicketMenu {
 
         try (Scanner in = new Scanner(System.in)) {
             // TODO: loop until quit
+            int choice = 0;
+
+            
+
             // print menu: 1=list 2=set priority 3=summary 4=quit
             System.out.println("Implement TicketMenu loop");
+            do {
+                System.out.println("\n--- Ticket Menu ---");
+                System.out.println("1 - List tickets");
+                System.out.println("2 - Set priority");
+                System.out.println("3 - Summary");
+                System.out.println("4 - Quit");
+                System.out.print("Choice: ");
+            }
+
         }
     }
 }
