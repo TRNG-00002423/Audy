@@ -100,12 +100,19 @@ public class TicketMenu {
                         break;
 
                     // Summary
+                    // Show the # of tickets, if multiple tickets add plural
                     case 3:
+                        int count = tickets.length;
+                        System.out.println(
+                            "\nYou have " +
+                            count + " ticket"  +
+                            (count == 1? "" : "s") + "."
+                        );
                         break;
 
                     // Closes the program
                     case 4:
-                        System.out.println("Goodbye!");
+                        System.out.println("\nGoodbye!");
                         break;
                     
                     default:
