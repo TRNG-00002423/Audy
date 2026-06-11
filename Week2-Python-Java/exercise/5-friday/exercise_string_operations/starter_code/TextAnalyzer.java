@@ -11,15 +11,51 @@ import java.nio.file.Path;
 public class TextAnalyzer {
 
     public static int wordCount(String text) {
-        throw new UnsupportedOperationException("TODO");
+        if (text == null || text.isBlank()){
+            return 0;
+        }
+        String[] words = text.trim().split("\\s");
+        return words.length;
     }
 
     public static boolean isPalindrome(String token) {
-        throw new UnsupportedOperationException("TODO");
+        if (token == null) {
+            return false;
+        }
+
+        token = token.toLowerCase().trim();
+
+        int left = 0;
+        int right = token.length() - 1;
+
+        // two pointer approach 
+        while (left < right) {
+            if (token.charAt(left) != token.charAt(right)){
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true;
     }
 
     public static int countOccurrences(String haystack, String needle) {
-        throw new UnsupportedOperationException("TODO");
+        if (haystack == null || needle == null || needle.length() == 0){
+            return 0;
+        }
+
+        int count = 0;
+
+        for (int i = 0; i <= haystack.length() - needle.length(); i++) {
+
+            String part = haystack.substring(i, i + needle.length());
+
+            if(part.equals(needle)) {
+                count++;
+            }
+        }
+        
+        return count;
     }
 
     public static void main(String[] args) throws IOException {
