@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  The root configuration tag. 
+  scan="true" tells Logback to look for file changes and reload automatically.
+  scanPeriod="30 seconds" controls how often it checks the file for updates.
+-->
+<configuration scan="true" scanPeriod="30 seconds">
+
+    <!-- 1. PROPERTIES: Variables used throughout this configuration file -->
+    <!-- Defines the destination directory where your log files will save -->
+    <property name="LOG_DIR" value="./logs" />
+    <!-- Defines the primary log file name -->
+    <property name="LOG_FILE_NAME" value="application" />
+
+    
+    <!-- 2. APPENDERS: Destinations where your log entries are sent -->
+    
+    <!-- Console Appender: Outputs logs directly to standard system output (Terminal) -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- Target tells the appender to print to System.out or System.err -->
+        <target>System.out</target>
+        
+        <!-- Encoder transforms log events into formatted byte arrays -->
+        <encoder>
+            <!-- 
+              Pattern layout tokens breakdown:
+              %d{yyyy-MM-dd HH:mm:ss.SSS} - Timestamp down to milliseconds
+              [%thread]                  - Name of the active execution thread
+              %-5level                   - Log severity (e.g., INFO, ERROR), padded to 5 spaces
+              %logger{36}                - Class name of the log generator (max 36 characters)
+              %msg                       - Actual message provided in your code
+              %n                         - Platform-dependent newline character
+            -->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Rolling File Appender: Saves logs to disk and rotates files dynamically -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- Path to the active, live log file -->
+        <file>${LOG_DIR}/${LOG_FILE_NAME}.log</file>
+        
+        <!-- Encoder keeps the file layout consistent with the console -->
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+
+        <!-- Rolling Policy: Dictates when and how log files rollover/archive -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- 
+              Daily Rollover Pattern: Creates an archive like application.2026-06-16.0.log.gz
+              The '.gz' extension automatically compresses old logs to save server space.
+            -->
+            <fileNamePattern>${LOG_DIR}/archived/${LOG_FILE_NAME}.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            
+            <!-- Rollover triggers if a single log file grows past this threshold -->
+            <maxFileSize>10MB</maxFileSize>
+            
+            <!-- Keeps a maximum history of 30 days worth of logs -->
+            <maxHistory>30</maxHistory>
+            
+            <!-- Cleans older files if total archive volume exceeds this storage limit -->
+            <totalSizeCap>2GB</totalSizeCap>
+        </rollingPolicy>
+    </appender>
+
+
+    <!-- 3. LOGGERS: Rules managing levels and routing for packages -->
+    
+    <!-- 
+      Application-specific Logger: Handles custom application logic.
+      Level "DEBUG" means it will log DEBUG, INFO, WARN, and ERROR messages.
+      additivity="false" prevents duplicate entries from bubbling up to the ROOT logger.
+    -->
+    <logger name="com.yourcompany.app" level="DEBUG" additivity="false">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="FILE" />
+    </logger>
+
+    <!-- 
+      The Root Logger: The mandatory baseline catch-all for your entire runtime.
+      Level "INFO" means TRACE and DEBUG logs from external frameworks are ignored.
+    -->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="FILE" />
+    </root>
+
+</configuration>

@@ -1,0 +1,6 @@
+2026-06-16 11:24:38.425 [main] INFO  com.rev.logging.LogBackDemo - Apllication started....
+2026-06-16 11:24:38.426 [main] ERROR com.rev.logging.LogBackDemo - An Arithmetic Exception Occured java.lang.ArithmeticException: / by zero
+2026-06-16 11:24:38.426 [main] INFO  com.rev.logging.LogBackDemo - Exception handled...
+2026-06-16 11:24:38.426 [main] INFO  com.rev.logging.LogBackDemo - Apllication Exited ... -- MEDIUM
+2026-06-16 11:24:38.426 [main] WARN  com.rev.logging.LogBackDemo - Warning Messages -- HIGH
+2026-06-16 11:24:38.426 [main] ERROR com.rev.logging.LogBackDemo - Error Messages -- HiGHEST
