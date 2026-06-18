@@ -3,6 +3,7 @@ package com.rev.stream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import com.rev.fileio.Student;
@@ -38,22 +39,27 @@ public class StreamDemo {
     names.stream()
         .forEach(System.out::println);
     
-    List<String> uppperCase_C = names.stream()
+    List<String> upperCase_C = names.stream()
                               .filter(name->name.startsWith("C"))
                               .map(String::toUpperCase)
                               .sorted()
                               .collect(Collectors.toList());
-    // reduce
-    
+
+    // reduce() to get longest string
+    Optional<String> longestString = names.stream()
+                                    .reduce((a, b) -> a.length() > b.length() ? a : b);
+
+    System.out.println("Longest string: " + longestString);
+      
     // Optional Class
-  
-  // Optional class is used to check for null pointer
-  Student student = null;
-  if (student!=null)
-    student.someMethod();
-  else
-    System.out.println("Some Code");
-  
+    
+    // Optional class is used to check for null pointer
+    // Student student = null;
+    // if (student!=null)
+    //   student.someMethod();
+    // else
+    //   System.out.println("Some Code");
+    
   }
   
 }
