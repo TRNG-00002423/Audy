@@ -20,7 +20,24 @@ public final class JdbcProductDao implements ProductDao {
 
     @Override
     public long insert(Product product) throws Exception {
-        throw new UnsupportedOperationException("TODO: insert with RETURN_GENERATED_KEYS");
+        String sql = "INSERT INTO product (sku, name, price, stock_qty) VALUES (?, ?, ?, ?)";
+    
+        try (PreparedStatement ps = connection.prepareStatement(sql, java.sql.Statement.RETURN_GENERATED_KEYS)) {
+        
+            ps.setString(1, product.sku());
+            ps.setString(2, product.name());
+            ps.setDouble(3, product.price());
+            ps.setInt(4, product.stockQty());
+            
+            ps.executeUpdate();
+            
+            try (ResultSet keys = ps.getGeneratedKeys()) {
+                if (keys.next()) {
+                    return keys.getLong(1);
+                }
+            }
+            throw new Exception("Failed to retrieve generated product ID");
+        }
     }
 
     @Override
@@ -52,12 +69,33 @@ public final class JdbcProductDao implements ProductDao {
 
     @Override
     public void updateStock(String sku, int newQty) throws Exception {
-        throw new UnsupportedOperationException("TODO");
+        String sql = "UPDATE product SET stock_qty = ? WHERE sku = ?";
+        
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setInt(1, newQty); 
+            ps.setString(2, sku);     
+            
+            int rowsAffected = ps.executeUpdate();
+            
+            if (rowsAffected == 0) {
+                System.out.println("Warning: No product found with SKU: " + sku);
+            }
+        }
     }
 
     @Override
     public void deleteBySku(String sku) throws Exception {
-        throw new UnsupportedOperationException("TODO");
+        String sql = "DELETE FROM product WHERE sku = ?";
+        
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setString(1, sku);
+            
+            int rowsAffected = ps.executeUpdate();
+            
+            if (rowsAffected == 0) {
+                System.out.println("Warning: No product found to delete with SKU: " + sku);
+            }
+        }
     }
 
     private static Product mapRow(ResultSet rs) throws Exception {
