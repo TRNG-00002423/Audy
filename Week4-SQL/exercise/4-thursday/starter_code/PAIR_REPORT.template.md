@@ -1,7 +1,7 @@
 # Pair report — JDBC exercise
 
-- **Partners:** Name A / Name B
-- **Driver for ProductDao / JdbcProductDao:**
-- **Driver for OrderDao / JdbcOrderDao:**
+- **Partners:** Audy / Benson
+- **Driver for ProductDao / JdbcProductDao:** Audy
+- **Driver for OrderDao / JdbcOrderDao:** Benson
 - **One JDBC lesson learned:**
 - **One pitfall avoided (or caught in review):**
